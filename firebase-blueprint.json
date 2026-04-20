@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Perfume product details",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "stock": { "type": "integer" }
+      },
+      "required": ["name", "price", "imageUrl"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details",
+      "type": "object",
+      "properties": {
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "customerEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "processing", "shipped", "delivered", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["items", "total", "customerEmail", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "products": {
+      "schema": "Product",
+      "description": "Catalog of perfumes"
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Customer orders"
+    }
+  }
+}
